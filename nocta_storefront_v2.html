@@ -1,0 +1,146 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.w{background:#0d0d0f;border-radius:12px;overflow:hidden;color:#e8e6f0;font-family:var(--font-sans);}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:0.5px solid #1e1e28;}
+.logo{font-size:18px;font-weight:500;letter-spacing:4px;color:#c4b8f0;text-transform:uppercase;}
+.nav-links{display:flex;gap:20px;font-size:13px;color:#555;}
+.nav-r{background:#1e1b2e;border:0.5px solid #3d3660;border-radius:8px;padding:6px 14px;font-size:12px;color:#c4b8f0;}
+
+.hero{padding:56px 24px 48px;text-align:center;border-bottom:0.5px solid #1a1a22;}
+.hero-tag{display:inline-block;background:#1a1727;border:0.5px solid #3d3660;border-radius:999px;font-size:11px;letter-spacing:2px;color:#9d8fd4;padding:5px 14px;margin-bottom:20px;text-transform:uppercase;}
+.hero h1{font-size:34px;font-weight:500;color:#f0eeff;line-height:1.2;margin-bottom:12px;}
+.hero p{font-size:15px;color:#666;max-width:360px;margin:0 auto 28px;line-height:1.7;}
+.hero-btn{background:#7c6fd4;border:none;border-radius:8px;color:#f0eeff;padding:13px 32px;font-size:14px;font-weight:500;cursor:pointer;letter-spacing:0.5px;}
+
+.sec-label{padding:32px 24px 14px;font-size:11px;letter-spacing:2px;color:#444;text-transform:uppercase;}
+
+.hero-product{margin:0 24px 12px;background:#111015;border:0.5px solid #2a2035;border-radius:12px;overflow:hidden;}
+.hp-img{background:#0f0c1a;height:160px;display:flex;align-items:center;justify-content:center;}
+.hp-icon{width:64px;height:64px;background:#1e1730;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;}
+.hp-body{padding:20px 24px;}
+.hp-badge{display:inline-block;background:#1a1727;border:0.5px solid #3d3660;border-radius:999px;font-size:10px;letter-spacing:1.5px;color:#9d8fd4;padding:4px 12px;margin-bottom:12px;text-transform:uppercase;}
+.hp-body h2{font-size:20px;font-weight:500;color:#f0eeff;margin-bottom:8px;}
+.hp-body p{font-size:14px;color:#666;line-height:1.7;margin-bottom:16px;max-width:480px;}
+.hp-bottom{display:flex;align-items:center;gap:16px;}
+.hp-price{font-size:22px;font-weight:500;color:#c4b8f0;}
+.hp-cta{background:#7c6fd4;border:none;border-radius:8px;color:#f0eeff;padding:10px 24px;font-size:13px;font-weight:500;cursor:pointer;}
+
+.transform{margin:0 24px 12px;background:#0f0d14;border:0.5px solid #1e1e28;border-radius:12px;padding:24px;}
+.transform-row{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;}
+.t-box{background:#141218;border:0.5px solid #222;border-radius:8px;padding:16px;}
+.t-box.after{border-color:#3d3660;}
+.t-label{font-size:10px;letter-spacing:2px;color:#444;text-transform:uppercase;margin-bottom:8px;}
+.t-box.after .t-label{color:#7c6fd4;}
+.t-title{font-size:14px;font-weight:500;color:#888;margin-bottom:6px;}
+.t-box.after .t-title{color:#d4cef0;}
+.t-desc{font-size:12px;color:#444;line-height:1.6;}
+.t-box.after .t-desc{color:#666;}
+.t-arrow{font-size:20px;color:#3d3660;text-align:center;}
+.transform-cta{margin-top:16px;text-align:center;font-size:13px;color:#7c6fd4;letter-spacing:0.5px;}
+
+.support-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 24px 12px;}
+.s-card{background:#111015;border:0.5px solid #1e1e28;border-radius:12px;overflow:hidden;}
+.s-img{height:80px;display:flex;align-items:center;justify-content:center;font-size:24px;}
+.s-led{background:#0f0d1a;}
+.s-glass{background:#0a0f10;}
+.s-body{padding:14px 16px;}
+.s-name{font-size:14px;font-weight:500;color:#d4cef0;margin-bottom:4px;}
+.s-desc{font-size:12px;color:#555;line-height:1.6;margin-bottom:12px;}
+.s-row{display:flex;justify-content:space-between;align-items:center;}
+.s-price{font-size:15px;font-weight:500;color:#c4b8f0;}
+.s-btn{background:#1e1b2e;border:0.5px solid #3d3660;border-radius:6px;color:#9d8fd4;font-size:11px;padding:5px 12px;cursor:pointer;}
+
+.final-cta{margin:0 24px 24px;background:#1a1727;border:0.5px solid #3d3660;border-radius:12px;padding:28px 24px;text-align:center;}
+.final-cta h3{font-size:20px;font-weight:500;color:#f0eeff;margin-bottom:8px;}
+.final-cta p{font-size:14px;color:#666;margin-bottom:20px;}
+.final-btn{background:#7c6fd4;border:none;border-radius:8px;color:#f0eeff;padding:12px 32px;font-size:14px;font-weight:500;cursor:pointer;}
+
+.footer{border-top:0.5px solid #1a1a22;padding:16px 24px;font-size:11px;color:#333;text-align:center;letter-spacing:2px;text-transform:uppercase;}
+</style>
+
+<div class="w">
+  <nav class="nav">
+    <div class="logo">Nocta</div>
+    <div class="nav-links"><span>Shop</span><span>Setup guide</span><span>About</span></div>
+    <div class="nav-r">Cart (0)</div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-tag">Night setup essentials</div>
+    <h1>Build your perfect<br>night setup.</h1>
+    <p>Everything you need for a calm, focused, aesthetic room after dark.</p>
+    <button class="hero-btn">Shop now</button>
+  </div>
+
+  <div class="sec-label">Main product</div>
+
+  <div class="hero-product">
+    <div class="hp-img">
+      <div class="hp-icon">&#127749;</div>
+    </div>
+    <div class="hp-body">
+      <div class="hp-badge">Hero product</div>
+      <h2>Turn your room into a 2AM aesthetic in 10 seconds.</h2>
+      <p>Soft gradients of amber and rose wash across your walls the moment you plug it in. No setup. No fuss. Just instant vibe — whether you're studying, gaming, or winding down.</p>
+      <div class="hp-bottom">
+        <div class="hp-price">&#8377;799</div>
+        <button class="hp-cta">Get yours</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label">Before &amp; after</div>
+
+  <div class="transform">
+    <div class="transform-row">
+      <div class="t-box">
+        <div class="t-label">Before Nocta</div>
+        <div class="t-title">Harsh light, tired eyes.</div>
+        <div class="t-desc">Boring room. Zero vibe. Screen glare at midnight.</div>
+      </div>
+      <div class="t-arrow">&#8594;</div>
+      <div class="t-box after">
+        <div class="t-label">After Nocta</div>
+        <div class="t-title">Warm glow, locked in.</div>
+        <div class="t-desc">Calm setup. Ready to create. Your best work happens here.</div>
+      </div>
+    </div>
+    <div class="transform-cta">Start your setup tonight &#8594;</div>
+  </div>
+
+  <div class="sec-label">Complete your setup</div>
+
+  <div class="support-grid">
+    <div class="s-card">
+      <div class="s-img s-led">&#128161;</div>
+      <div class="s-body">
+        <div class="s-name">LED strip lights</div>
+        <div class="s-desc">Upgrade your entire setup for under &#8377;500. RGB + warm modes.</div>
+        <div class="s-row">
+          <div class="s-price">&#8377;499</div>
+          <button class="s-btn">Add to setup</button>
+        </div>
+      </div>
+    </div>
+    <div class="s-card">
+      <div class="s-img s-glass">&#128083;</div>
+      <div class="s-body">
+        <div class="s-name">Blue light glasses</div>
+        <div class="s-desc">Your eyes aren't built for 3AM screens. Lightweight, unisex.</div>
+        <div class="s-row">
+          <div class="s-price">&#8377;449</div>
+          <button class="s-btn">Protect your eyes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <h3>Start your setup tonight.</h3>
+    <p>One order. One vibe shift. Ships in 3–5 days.</p>
+    <button class="final-btn" onclick="sendPrompt('Write 5 viral TikTok scripts for Nocta night setup store')">Get the TikTok scripts too &#8599;</button>
+  </div>
+
+  <div class="footer">nocta — everything for the night vibe</div>
+</div>
