@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nocta — Night Setup Essentials</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #09090c;
+    --bg2: #111116;
+    --bg3: #16161d;
+    --border: #1f1f2a;
+    --border2: #2e2a48;
+    --purple: #8b7cf8;
+    --purple-dim: #6356c4;
+    --text: #eeeaf8;
+    --text2: #9390a8;
+    --text3: #4a4860;
+    --accent: #c4b8f8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(9,9,12,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 60px;
+  }
+
+  .logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 15px;
+    letter-spacing: 5px;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: 13px;
+    color: var(--text3);
+  }
+
+  .nav-links a:hover { color: var(--text2); }
+
+  .nav-cart {
+    background: var(--bg3);
+    border: 0.5px solid var(--border2);
+    border-radius: 8px;
+    padding: 7px 18px;
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    color: var(--accent);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .nav-cart:hover { background: #1e1b2e; }
+
+  /* HERO */
+  .hero {
+    padding: 100px 32px 80px;
+    text-align: center;
+    border-bottom: 0.5px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(107,90,210,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(107,90,210,0.1);
+    border: 0.5px solid var(--border2);
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    color: var(--purple);
+    padding: 6px 16px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero p {
+    font-size: 16px;
+    color: var(--text2);
+    max-width: 400px;
+    margin: 0 auto 36px;
+    font-weight: 300;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  .hero-btn {
+    display: inline-block;
+    background: var(--purple-dim);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 14px 36px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, transform 0.15s;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+
+  .hero-btn:hover { background: var(--purple); transform: translateY(-1px); }
+  .hero-btn:active { transform: translateY(0); }
+
+  /* SECTION LABELS */
+  .section-label {
+    padding: 40px 32px 16px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text3);
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* HERO PRODUCT */
+  .hero-product {
+    margin: 0 32px 16px;
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+  }
+
+  @media (max-width: 640px) {
+    .hero-product { grid-template-columns: 1fr; }
+  }
+
+  .hp-visual {
+    background: #0c0a18;
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hp-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(107,90,210,0.18) 0%, transparent 65%);
+  }
+
+  .hp-icon-wrap {
+    width: 80px;
+    height: 80px;
+    background: rgba(107,90,210,0.15);
+    border: 0.5px solid var(--border2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hp-body {
+    padding: 32px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hp-badge {
+    display: inline-block;
+    background: rgba(107,90,210,0.12);
+    border: 0.5px solid var(--border2);
+    border-radius: 999px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--purple);
+    padding: 4px 12px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+    width: fit-content;
+  }
+
+  .hp-body h2 {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+
+  .hp-body p {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.75;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  .hp-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .hp-features li {
+    font-size: 12px;
+    color: var(--text3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .hp-features li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--purple);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .hp-bottom {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .hp-price {
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .hp-cta {
+    background: var(--purple-dim);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    padding: 11px 24px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .hp-cta:hover { background: var(--purple); }
+
+  /* TRANSFORM */
+  .transform-section {
+    margin: 0 32px 16px;
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 28px;
+  }
+
+  .transform-grid {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    gap: 8px;
+    align-items: center;
+  }
+
+  @media (max-width: 560px) {
+    .transform-grid { grid-template-columns: 1fr; }
+    .t-arrow { display: none; }
+  }
+
+  .t-box {
+    background: var(--bg3);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+
+  .t-box.after {
+    border-color: var(--border2);
+    background: rgba(107,90,210,0.06);
+  }
+
+  .t-tag {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--text3);
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 8px;
+  }
+
+  .t-box.after .t-tag { color: var(--purple); }
+
+  .t-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text3);
+    margin-bottom: 4px;
+  }
+
+  .t-box.after .t-title { color: var(--text); }
+
+  .t-sub {
+    font-size: 12px;
+    color: #333;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .t-box.after .t-sub { color: var(--text3); }
+
+  .t-arrow {
+    text-align: center;
+    font-size: 16px;
+    color: var(--border2);
+  }
+
+  .transform-cta {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--purple);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+  }
+
+  .transform-cta:hover { color: var(--accent); }
+
+  /* SUPPORT PRODUCTS */
+  .support-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 0 32px 16px;
+  }
+
+  @media (max-width: 500px) {
+    .support-grid { grid-template-columns: 1fr; }
+  }
+
+  .s-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .s-card:hover { border-color: var(--border2); }
+
+  .s-img {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+  }
+
+  .s-led { background: #0e0c1c; }
+  .s-glass { background: #090d10; }
+
+  .s-body { padding: 16px 18px; }
+
+  .s-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+
+  .s-desc {
+    font-size: 12px;
+    color: var(--text3);
+    line-height: 1.7;
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+
+  .s-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .s-price {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .s-btn {
+    background: transparent;
+    border: 0.5px solid var(--border2);
+    border-radius: 6px;
+    color: var(--purple);
+    font-size: 11px;
+    font-family: 'DM Sans', sans-serif;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .s-btn:hover { background: rgba(107,90,210,0.12); color: var(--accent); }
+
+  /* FINAL CTA */
+  .final-cta {
+    margin: 8px 32px 32px;
+    background: linear-gradient(135deg, rgba(107,90,210,0.12) 0%, rgba(107,90,210,0.04) 100%);
+    border: 0.5px solid var(--border2);
+    border-radius: 16px;
+    padding: 40px 32px;
+    text-align: center;
+  }
+
+  .final-cta h3 {
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+
+  .final-cta p {
+    font-size: 14px;
+    color: var(--text3);
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .final-btn {
+    background: var(--purple-dim);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 13px 32px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .final-btn:hover { background: var(--purple); }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 24px 32px;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text3);
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE */
+  @media (max-width: 480px) {
+    nav { padding: 0 16px; }
+    .hero { padding: 64px 16px 56px; }
+    .section-label { padding: 28px 16px 12px; }
+    .hero-product { margin: 0 16px 12px; }
+    .transform-section { margin: 0 16px 12px; }
+    .support-grid { margin: 0 16px 12px; }
+    .final-cta { margin: 8px 16px 24px; }
+    .nav-links { display: none; }
+    .hp-body { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Nocta</div>
+  <div class="nav-links">
+    <a href="#shop">Shop</a>
+    <a href="#setup">Setup guide</a>
+    <a href="#about">About</a>
+  </div>
+  <div class="nav-cart" id="cartBtn">Cart (0)</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">Night setup essentials</div>
+  <h1>Build your perfect<br><em>night setup.</em></h1>
+  <p>Everything you need for a calm, focused, aesthetic room after dark.</p>
+  <button class="hero-btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop now</button>
+</section>
+
+<div class="section-label" id="shop">Main product</div>
+
+<div class="hero-product fade-in">
+  <div class="hp-visual">
+    <div class="hp-icon-wrap">&#127749;</div>
+  </div>
+  <div class="hp-body">
+    <div class="hp-badge">Hero product</div>
+    <h2>Turn your room into a 2AM aesthetic in 10 seconds.</h2>
+    <p>Soft gradients of amber and rose wash across your walls the moment you plug it in. No setup. No fuss. Just instant vibe — whether you're studying, gaming, or winding down.</p>
+    <ul class="hp-features">
+      <li>Works in any room</li>
+      <li>Plug &amp; play, no app needed</li>
+      <li>Warm tones designed for night use</li>
+    </ul>
+    <div class="hp-bottom">
+      <div class="hp-price">&#8377;799</div>
+      <button class="hp-cta" onclick="addToCart('Sunset Projector', 799)">Get yours</button>
+    </div>
+  </div>
+</div>
+
+<div class="section-label">Before &amp; after</div>
+
+<div class="transform-section fade-in">
+  <div class="transform-grid">
+    <div class="t-box">
+      <div class="t-tag">Before Nocta</div>
+      <div class="t-title">Harsh light, tired eyes.</div>
+      <div class="t-sub">Boring room. Zero vibe. Screen glare at midnight.</div>
+    </div>
+    <div class="t-arrow">&#8594;</div>
+    <div class="t-box after">
+      <div class="t-tag">After Nocta</div>
+      <div class="t-title">Warm glow, locked in.</div>
+      <div class="t-sub">Calm setup. Ready to create. Your best work happens here.</div>
+    </div>
+  </div>
+  <div class="transform-cta" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Start your setup tonight &#8594;</div>
+</div>
+
+<div class="section-label">Complete your setup</div>
+
+<div class="support-grid fade-in">
+  <div class="s-card">
+    <div class="s-img s-led">&#128161;</div>
+    <div class="s-body">
+      <div class="s-name">LED strip lights</div>
+      <div class="s-desc">Upgrade your entire setup for under &#8377;500. RGB + warm white modes. 5m flexible strip, easy install.</div>
+      <div class="s-row">
+        <div class="s-price">&#8377;499</div>
+        <button class="s-btn" onclick="addToCart('LED Strip Lights', 499)">Add to setup</button>
+      </div>
+    </div>
+  </div>
+  <div class="s-card">
+    <div class="s-img s-glass">&#128083;</div>
+    <div class="s-body">
+      <div class="s-name">Blue light glasses</div>
+      <div class="s-desc">Your eyes aren't built for 3AM screens. Lightweight, unisex fit. Blocks 40% of blue light.</div>
+      <div class="s-row">
+        <div class="s-price">&#8377;449</div>
+        <button class="s-btn" onclick="addToCart('Blue Light Glasses', 449)">Protect your eyes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="final-cta fade-in">
+  <h3>Start your setup tonight.</h3>
+  <p>One order. One vibe shift. Ships in 3–5 days.</p>
+  <button class="final-btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop the collection</button>
+</div>
+
+<footer id="about">
+  nocta &nbsp;—&nbsp; everything for the night vibe
+</footer>
+
+<script>
+  let cart = [];
+
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    const total = cart.reduce((s, i) => s + i.price, 0);
+    document.getElementById('cartBtn').textContent = 'Cart (' + cart.length + ') — ₹' + total.toLocaleString('en-IN');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
